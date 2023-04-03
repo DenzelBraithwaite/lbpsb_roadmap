@@ -2,10 +2,13 @@
 
 </script>
 
-<nav class="w-screen py-6 bg-emerald-600 text-white font-bold fixed">
+<nav class="w-screen py-6 bg-cyan-800 text-white font-bold fixed">
     <p class="text-center text-2xl">Navbar</p>
 </nav>
 
 <style>
-
+    nav {
+        z-index: 10;
+        opacity: 95%;
+    }
 </style>
