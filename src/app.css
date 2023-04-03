@@ -1,14 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  color: #fff;
-  background-color: #242424;
+  color: #242424;
+  background-color: #fff;
   
-  color-scheme: dark;
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +17,7 @@
 }
 
 body {
+  position: relative;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -26,4 +27,8 @@ body {
 a:hover,
 a:active {
   text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
 }

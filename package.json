@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "buildcss": "npx tailwindcss -i ./src/app.css -o ./dist/assets/app.css --watch",
+    "watchcss": "npx tailwindcss -i ./src/app.css -o ./dist/assets/app.css --watch",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
