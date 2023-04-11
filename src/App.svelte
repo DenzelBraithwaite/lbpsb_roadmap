@@ -5,11 +5,17 @@
   import Calendar from './lib/UI/Calendar.svelte';
   import Form from './lib/UI/Form.svelte';
 
+  let userEvents = [];
+
+  function newProjectHandler(event) {
+    userEvents.push(event.detail);
+    console.log(userEvents);
+  };
 </script>
 
 <Navbar />
 <main>
-  <Form />
+  <!-- <Form filePath='./lib/UI/Calendar' on:addProject={newProjectHandler}/> -->
   <Calendar />
 </main>
 <Footer />

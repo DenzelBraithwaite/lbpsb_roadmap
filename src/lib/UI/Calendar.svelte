@@ -29,12 +29,25 @@
         center: 'title',
         left: 'dayGridMonth,timeGridWeek,timeGridDay,today'
       },
+      footerToolbar: {
+        right: '',
+        center: 'addEventButton',
+        left: ''
+      },
+      customButtons: {
+        addEventButton: {
+          text: 'New Project',
+          click: function() {
+            console.log('Instead of console log, add this to events')
+          }
+        }
+      },
       events: [
         {
-          title: 'test',
-          start: '2023-04-10T07:00:00',
-          end: '2023-04-12T16:30:00'
-        }
+          'title': 'Example Project',
+          'start': '2023-04-11',
+          'end': '2023-04-20'
+        },
       ],
       droppable: true, // This allows things to be dropped onto the calendar
       dateClick: function(info) {
@@ -53,9 +66,12 @@
           }
     }});
 
+    // Initiate calendar 
     calendar.render();
   });
+  
 
+  
 </script>
 <div id="calendar"></div>
 
