@@ -31,6 +31,9 @@
         multiMonthPlugin
       ],
       initialView: 'dayGridMonth',
+      selectable: true,
+      droppable: true, // This allows things to be dropped onto the calendar
+      dragScroll: true, // Let's user drag off the calendar and have it keep scrolling.
       headerToolbar: {
         right: 'prev,next',
         center: 'title',
@@ -50,20 +53,9 @@
         }
       },
       events: [],
-      droppable: true, // This allows things to be dropped onto the calendar
       dateClick: function(info) {
-        // Do something more meaningful here
-        // let dateString: String = info.dateStr;
-        // alert(`You clicked on: ${dateString}`)
-
-
-          if(info.dayEl.style.backgroundColor !== 'rgba(197, 241, 255, 0.525)'){
-            // Open a modal with more info about event/project
-            info.dayEl.style.backgroundColor = '#c5f1ff86';
+        // Open a modal with more info about event/project
             
-          } else {
-            info.dayEl.style.backgroundColor = 'white';
-          }
     }});
 
     // Initiate calendar 
@@ -76,6 +68,7 @@
   
   function submitHandler(event) {
     calendar.addEvent(event.detail);
+    formVisible = false;
   };
 
 </script>
