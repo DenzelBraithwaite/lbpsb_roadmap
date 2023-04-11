@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher } from "svelte";
 
     export let filePath;
-
+    
     $: tech = '';
     $: fName = tech.split(' ')[0];
     $: lName = tech.split(' ')[1] || '';
@@ -55,9 +55,9 @@
     ];
 
     const createEvent = createEventDispatcher();
-
-    function addProjectHandler() {
-        createEvent('addProject', {
+    
+    function formHandler(event) {
+        createEvent('formSubmit', {
             'title': title,
             'start': startDate,
             'end': endDate,
@@ -65,21 +65,13 @@
     }
 </script>
 
-<!-- For Debugging-->
-<p><span class="font-bold">First name: </span>{fName}</p>
-<p><span class="font-bold">Last name: </span>{lName}</p>
-<p><span class="font-bold">tech: </span>{tech}</p>
-<p><span class="font-bold">Title: </span>{title}</p>
-<p><span class="font-bold">Description: </span> {description}</p>
-<p><span class="font-bold">Start: </span> {startDate}</p>
-<p><span class="font-bold">End: </span> {endDate}</p>
-
-<form on:submit|preventDefault={addProjectHandler} class="mx-auto border-t-2 border-cyan-800 rounded" action="{filePath}">
-<h1 class="text-center text-2xl ">Create an Event</h1>
-<div class="form-control">
-    <input bind:value={title} id="title" name="title" type="text" placeholder="Title" class="border-b">
-    <input bind:value={description} id="title" name="title" type="text" placeholder="Description" class="border-b">
-    <div class="border-b py-2">
+<form on:submit|preventDefault={formHandler} class="border-t-2 border-cyan-800 rounded" action="{filePath}">
+    <p on:click class="x-btn absolute top-2 right-2 text-red-700 font-bold cursor-pointer hover:bg-red-700 hover:rounded hover:text-white hover:p-1">X</p>
+    <div class="form-wrapper">
+        <h1 class="text-center text-2xl ">Create an Event</h1>
+        <input bind:value={title} id="title" name="title" type="text" placeholder="Title" class="border-b">
+        <input bind:value={description} id="title" name="title" type="text" placeholder="Description" class="border-b">
+        <div class="border-b py-5">
             <label for="tech" class="">Choose Technician</label>
             <select bind:value={tech} name="tech" id="tech" class="border rounded">
                 {#each techs as tech}
@@ -87,25 +79,43 @@
                 {/each}
             </select>
         </div>
-    <input bind:value={startDate} id="title" name="title" type="date" placeholder="Start" class="border-b">
-    <input bind:value={endDate} id="title" name="title" type="date" placeholder="End" class="border-b">
+        <input bind:value={startDate} id="title" name="title" type="date" placeholder="Start" class="border-b">
+        <input bind:value={endDate} id="title" name="title" type="date" placeholder="End" class="border-b">
+    </div>
     <button type="submit" class="mx-auto block text-white bg-cyan-800 rounded px-4 py-2 w-full hover:bg-cyan-700">Add</button>
-</div>
+
+    <!-- For Debugging-->
+    <!-- <p><span class="font-bold">First name: </span>{fName}</p>
+    <p><span class="font-bold">Last name: </span>{lName}</p>
+    <p><span class="font-bold">tech: </span>{tech}</p>
+    <p><span class="font-bold">Title: </span>{title}</p>
+    <p><span class="font-bold">Description: </span> {description}</p>
+    <p><span class="font-bold">Start: </span> {startDate}</p>
+    <p><span class="font-bold">End: </span> {endDate}</p> -->
 </form>
 
 <style>
-
-
 form {
-    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+
+    width: 400px;
     box-shadow: 0 2px 8px #00000018;
     padding: 1rem 0.5rem;
+    background-color: #fff;
+
+    position: fixed ;
+    z-index: 10;
+    right: 0;
+    bottom: 0;
+    height: 80vh;
 }
 
-
-input {
+input{
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 input:focus {
@@ -117,6 +127,9 @@ input:last-of-type {
     margin-bottom: 2rem;
 }
 
+.x-btn {
+    transition: all 0.125s ease-in;
+}
 </style>
   
   

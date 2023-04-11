@@ -8,7 +8,7 @@
 
 <style>
     nav {
-        z-index: 10;
+        z-index: 20;
         opacity: 95%;
     }
 </style>

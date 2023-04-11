@@ -5,23 +5,19 @@
   import Calendar from './lib/UI/Calendar.svelte';
   import Form from './lib/UI/Form.svelte';
 
-  let userEvents = [];
-
-  function newProjectHandler(event) {
-    userEvents.push(event.detail);
-    console.log(userEvents);
-  };
 </script>
 
 <Navbar />
-<main>
-  <!-- <Form filePath='./lib/UI/Calendar' on:addProject={newProjectHandler}/> -->
+<main class="mx-auto">
   <Calendar />
 </main>
 <Footer />
 
 <style>
   main {
+    position: relative;
+    width: 85%;
+    max-width: 1200px;
     padding: 150px 0;
   }
 </style>

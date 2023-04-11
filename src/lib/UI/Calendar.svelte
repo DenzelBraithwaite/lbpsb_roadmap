@@ -1,4 +1,5 @@
 <script lang="ts">
+  // From Svelte
   import { onMount } from 'svelte';
 
   // Full Calendar Plugins
@@ -11,10 +12,16 @@
   import interactionPlugin from '@fullcalendar/interaction';
   import multiMonthPlugin from '@fullcalendar/multimonth';
   // import scrollGridPlugin from '@fullcalendar/scrollgrid'; // Req. premium
+
+  // Import custom components
+  import Form from './Form.svelte';
   
+  $: formVisible = false;
+  let calendar;
+
   onMount(() => {
     const calendarEl: HTMLElement = document.getElementById('calendar')!;
-    const calendar = new Calendar(calendarEl, {
+    calendar = new Calendar(calendarEl, {
       // schedulerLicenseKey: '<YOUR-LICENSE-KEY-GOES-HERE>',
       plugins: [ 
         dayGridPlugin,
@@ -38,24 +45,17 @@
         addEventButton: {
           text: 'New Project',
           click: function() {
-            console.log('Instead of console log, add this to events')
+            formVisible = true;
           }
         }
       },
-      events: [
-        {
-          'title': 'Example Project',
-          'start': '2023-04-11',
-          'end': '2023-04-20'
-        },
-      ],
+      events: [],
       droppable: true, // This allows things to be dropped onto the calendar
       dateClick: function(info) {
         // Do something more meaningful here
         // let dateString: String = info.dateStr;
         // alert(`You clicked on: ${dateString}`)
-        // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-        // alert('Current view: ' + info.view.type);
+
 
           if(info.dayEl.style.backgroundColor !== 'rgba(197, 241, 255, 0.525)'){
             // Open a modal with more info about event/project
@@ -70,17 +70,25 @@
     calendar.render();
   });
   
-
+  function formVisibilityHandler() {
+    formVisible = false;
+  }
   
+  function submitHandler(event) {
+    calendar.addEvent(event.detail);
+  };
+
 </script>
 <div id="calendar"></div>
 
+{#if formVisible}
+  <Form on:formSubmit={submitHandler} filePath='#' on:click={formVisibilityHandler}/>
+{/if}
+
 <style>
   #calendar {
-    margin: 0 auto;
-    padding-top: 120px;
-    height: 80vh;
-    width: 80vw;
+    padding: 2rem;
+    height: 800px;
   }
 </style>
 
