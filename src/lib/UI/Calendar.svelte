@@ -30,7 +30,8 @@
         interactionPlugin,
         multiMonthPlugin
       ],
-      initialView: 'dayGridMonth',
+      initialView: 'multiMonthYear',
+      multiMonthMaxColumns: 1,
       selectable: true,
       droppable: true, // This allows things to be dropped onto the calendar
       dragScroll: true, // Let's user drag off the calendar and have it keep scrolling.
@@ -52,7 +53,39 @@
           }
         }
       },
-      events: [],
+      events: [
+        {
+          title: 'Boilerplate Title',
+          description: 'Boilerplate description',
+          start: '2023-04-20',
+          end: '2023-04-28'
+        }
+      ],
+      eventClick: function(info) {
+        // Create modal
+        const eventModal = document.createElement('div');
+        eventModal.classList.add('event-modal');
+
+        // Add modal content
+        const eventModalContent = document.createElement('div');
+        eventModalContent.classList.add('event-modal-content');
+        eventModalContent.innerHTML = "<h1>Test, hello from Modal world</h1>"
+        
+        // Add modal content to Modal
+        eventModal.appendChild(eventModalContent);
+
+        // Add modal to DOM
+        document.body.appendChild(eventModal);
+
+        // modalContent.innerHTML = '<h2>' + info.event.title + '</h2><p>' + info.event.extendedProps.description + '</p>';
+        
+        // close modal window when clicked outside
+        // window.addEventListener('click', function(event) {
+        //   if (event.target == modal) {
+        //     modal.remove();
+        //   }
+        // })
+      },
       dateClick: function(info) {
         // Open a modal with more info about event/project
             
@@ -72,7 +105,8 @@
   };
 
 </script>
-<div id="calendar"></div>
+<div id="calendar" class="rounded p-8 shadow-lg"></div>
+<div class="event-modal2">Hey</div>
 
 {#if formVisible}
   <Form on:formSubmit={submitHandler} filePath='#' on:click={formVisibilityHandler}/>
@@ -80,8 +114,30 @@
 
 <style>
   #calendar {
-    padding: 2rem;
-    height: 800px;
+    box-shadow: 0 2px 8px #00000025;
+    height: 750px;
+  }
+
+  .event-modal {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border-radius: 4px;
+
+    position: absolute;
+    top: 100px;
+    left: 100px;
+  }
+
+  .event-modal2 {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    border-radius: 4px;
+
+    position: absolute;
+    top: 100px;
+    right: 100px;
   }
 </style>
 

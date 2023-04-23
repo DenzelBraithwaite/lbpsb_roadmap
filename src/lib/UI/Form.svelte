@@ -59,6 +59,7 @@
     function formHandler(event) {
         createEvent('formSubmit', {
             'title': title,
+            'description': description,
             'start': startDate,
             'end': endDate,
         })
