@@ -129,6 +129,11 @@
     left: 100px;
   }
 
+  .event-modal-content {
+    padding: 1rem;
+    background-color: greenyellow;
+  }
+
   .event-modal2 {
     height: 100px;
     width: 100px;
