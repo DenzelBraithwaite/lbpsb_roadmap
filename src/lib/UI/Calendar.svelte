@@ -33,7 +33,7 @@
       initialView: 'multiMonthYear',
       multiMonthMaxColumns: 1,
       selectable: true,
-      droppable: true, // This allows things to be dropped onto the calendar
+      droppable: false, // This allows things to be dropped onto the calendar
       dragScroll: true, // Let's user drag off the calendar and have it keep scrolling.
       headerToolbar: {
         right: 'prev,next',
@@ -64,12 +64,33 @@
       eventClick: function(info) {
         // Create modal
         const eventModal = document.createElement('div');
-        eventModal.classList.add('event-modal');
+        eventModal.innerHTML = `
+          <div class="event-modal z-20 absolute top-1/2 left-1/2 bg-white rounded p-5 shadow-lg">
+            <p class="text-sm font-bold">Title</p>
+            <p class="text-xl mb-5 border-b border-grey">Some project title</p>
+            <p class="text-sm font-bold">Start</p>
+            <p class="text-sm mb-5">04/04/2023</p>
+            <p class="text-sm font-bold">End</p>
+            <p class="text-sm mb-5">04/09/2023</p>
+            <p class="text-sm font-bold">Status</p>
+            <select name="status" id="status" class="border w-full mb-5 p-1">
+              <option value="not set">Not set</option>
+              <option value="on track">On track</option>
+              <option value="at risk">At risk</option>
+              <option value="high risk">High risk</option>
+              <option value="done">Done</option>
+            </select>
+            <button class="border px-3 py-2">Open details</button>
+          </div>
+        `;
+        eventModal.classList.add(
+          // Using tailwind above in innerHTML instead
+        );
 
         // Add modal content
         const eventModalContent = document.createElement('div');
         eventModalContent.classList.add('event-modal-content');
-        eventModalContent.innerHTML = "<h1>Test, hello from Modal world</h1>"
+        eventModalContent.innerHTML = "<h1>Test, hello from Modal world, inner content</h1>"
         
         // Add modal content to Modal
         eventModal.appendChild(eventModalContent);
@@ -106,12 +127,27 @@
 
 </script>
 <div id="calendar" class="rounded p-8 shadow-lg"></div>
-<div class="event-modal2">Hey</div>
 
 {#if formVisible}
   <Form on:formSubmit={submitHandler} filePath='#' on:click={formVisibilityHandler}/>
 {/if}
-
+<!-- <div class="event-modal z-20 absolute top-1/2 left-1/2 bg-white rounded p-5 shadow-lg">
+  <p class="text-sm font-bold">Title</p>
+  <p class="text-xl mb-5 border-b border-grey">Some project title</p>
+  <p class="text-sm font-bold">Start</p>
+  <p class="text-sm mb-5">04/04/2023</p>
+  <p class="text-sm font-bold">End</p>
+  <p class="text-sm mb-5">04/09/2023</p>
+  <p class="text-sm font-bold">Status</p>
+  <select name="status" id="status" class="border w-full mb-5 p-1">
+    <option value="not set">Not set</option>
+    <option value="on track">On track</option>
+    <option value="at risk">At risk</option>
+    <option value="high risk">High risk</option>
+    <option value="done">Done</option>
+  </select>
+  <button class="border px-3 py-2">Open details</button>
+</div> -->
 <style>
   #calendar {
     box-shadow: 0 2px 8px #00000025;
@@ -119,30 +155,14 @@
   }
 
   .event-modal {
-    height: 100px;
-    width: 100px;
-    background-color: red;
-    border-radius: 4px;
-
-    position: absolute;
-    top: 100px;
-    left: 100px;
+    /* Empty because styles weren't applying after elem was created.
+    Used tailwind instead, that seemed to work. */
   }
 
+  /* Not used currently */
   .event-modal-content {
     padding: 1rem;
     background-color: greenyellow;
-  }
-
-  .event-modal2 {
-    height: 100px;
-    width: 100px;
-    background-color: blue;
-    border-radius: 4px;
-
-    position: absolute;
-    top: 100px;
-    right: 100px;
   }
 </style>
 

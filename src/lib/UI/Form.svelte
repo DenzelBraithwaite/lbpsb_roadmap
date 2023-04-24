@@ -52,6 +52,14 @@
             'username': 'l.pearson',
             'role': 'prime minister'
         },
+        {
+            'id': '6',
+            'firstName': 'Imafirstname',
+            'lastName': 'Imalastname',
+            'email': 'lester.pearson@lbpearson.com',
+            'username': 'l.pearson',
+            'role': 'prime minister'
+        },
     ];
 
     const createEvent = createEventDispatcher();
