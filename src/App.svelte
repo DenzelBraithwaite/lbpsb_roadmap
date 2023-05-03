@@ -2,8 +2,9 @@
   import { onMount } from 'svelte';
   import Navbar from './lib/UI/Navbar.svelte';
   import Footer from './lib/UI/Footer.svelte';
-  import Calendar from './lib/UI/Calendar.svelte';
   import Form from './lib/UI/Form.svelte';
+  // import Calendar from './lib/UI/Calendar.svelte';
+  import Timeline from './lib/UI/TImeline.svelte';
 
 </script>
 
@@ -15,7 +16,8 @@
     <li>Click on calendar event to see more details.</li>
     <li>Scroll endlessly through all months view. ✅</li>
   </ul>
-  <Calendar />
+  <Timeline />
+  <!-- <Calendar /> -->
 </main>
 <Footer />
 

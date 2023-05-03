@@ -57,8 +57,8 @@
         {
           title: 'Boilerplate Title',
           description: 'Boilerplate description',
-          start: '2023-04-20',
-          end: '2023-04-28'
+          start: '2023-05-20',
+          end: '2023-05-28'
         }
       ],
       eventClick: function(info) {
@@ -152,17 +152,6 @@
   #calendar {
     box-shadow: 0 2px 8px #00000025;
     height: 750px;
-  }
-
-  .event-modal {
-    /* Empty because styles weren't applying after elem was created.
-    Used tailwind instead, that seemed to work. */
-  }
-
-  /* Not used currently */
-  .event-modal-content {
-    padding: 1rem;
-    background-color: greenyellow;
   }
 </style>
 

@@ -21,12 +21,14 @@
     "vite": "^4.2.0"
   },
   "dependencies": {
-    "@fullcalendar/core": "^6.1.5",
+    "@fullcalendar/core": "^6.1.6",
+    "@fullcalendar/daygrid": "^6.1.6",
     "@fullcalendar/interaction": "^6.1.5",
-    "@fullcalendar/daygrid": "^6.1.5",
-    "@fullcalendar/timegrid": "^6.1.5",
-    "@fullcalendar/list": "^6.1.5",
+    "@fullcalendar/list": "^6.1.6",
     "@fullcalendar/multimonth": "^6.1.5",
-    "@fullcalendar/scrollgrid": "^6.1.5"
+    "@fullcalendar/resource": "^6.1.6",
+    "@fullcalendar/resource-timeline": "^6.1.6",
+    "@fullcalendar/scrollgrid": "^6.1.5",
+    "@fullcalendar/timegrid": "^6.1.6"
   }
 }
