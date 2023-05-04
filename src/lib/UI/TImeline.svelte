@@ -8,27 +8,40 @@
     import timeGridPlugin from '@fullcalendar/timegrid';
     import listPlugin from '@fullcalendar/list';
 
+    // Premium FullCalendar features
+    import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+
     onMount(() => {
         console.log('yes mounted')
 
-        const calendarEl: HTMLElement = document.getElementById('calendar')!;
-        let calendar = new Calendar(calendarEl, {
-            plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
-            initialView: 'dayGridMonth',
+        const timelineEl: HTMLElement = document.getElementById('timeline')!;
+        let timeline = new Calendar(timelineEl, {
+            schedulerLicenseKey: '0478426686-fcs-1616090302',
+            // schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives', // Trial version
+            plugins: [ resourceTimelinePlugin ],
+            initialView: 'resourceTimeline',
+            // resources: [],
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,listWeek'
+                right: 'timelineDay, timelineWeek, timelineMonth, timelineYear'
             }
         });
+        timeline.render();
     });
 
 </script>
 
-<h1>Hello Girl</h1>
+<main>
+    <div id="timeline"></div>
+</main>
 
 <style>
-    h1 {
-        color: red;
+    main {
+        min-height: 50vh;
+    }
+
+    #calendar {
+        height: 600px;
     }
 </style>
