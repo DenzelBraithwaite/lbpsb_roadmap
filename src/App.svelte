@@ -2,43 +2,87 @@
   import { onMount } from 'svelte';
   import Navbar from './lib/UI/Navbar.svelte';
   import Footer from './lib/UI/Footer.svelte';
-  import Form from './lib/UI/Form.svelte';
+  import ADdProjectForm from './lib/UI/AddProjectForm.svelte';
   import Timeline from './lib/UI/TImeline.svelte';
+  import AddProjectForm from './lib/UI/AddProjectForm.svelte';
 
   // Employee data that would come from DB
   const employees = [
-    {id: 'e01', title: 'Denzel'},
-    {id: 'e02', title: 'Steven'},
-    {id: 'e03', title: 'Boby'},
-    {id: 'e04', title: 'Francois'},
     {
-        id: 'nt',
-        title: 'nest test',
-        children: [
-            {id: 'tc', title: 'test child'}
-        ]
+      id: 'e1',
+      firstName: 'denzel',
+      lastName: 'braithwaite',
+      title: `denzel braithwaite`, // Title is what fullcalendar displays as resource name
+      email: 'denzel.braithwaite@lbpearson.com',
+      username: 'd.braithwaite',
+      role: 'devloper'
+    },    {
+        id: 'e2',
+        firstName: 'jeffrey',
+        lastName: 'hammond',
+        title: `jeffrey hammond`,
+        email: 'jeffrey.hammond@lbpearson.com',
+        username: 'j.hammond',
+        role: 'technician'
+    },
+    {
+        id: 'e3',
+        firstName: 'steven',
+        lastName: 'lacroix',
+        title: `steven lacroix`,
+        email: 'steven.lacroix@lbpearson.com',
+        username: 's.lacroix',
+        role: 'devloper'
+    },
+    {
+        id: 'e4',
+        firstName: 'mario',
+        lastName: 'mario', // His last name is actually Mario
+        title: `mario mario`,
+        email: 'mario.mario@lbpearson.com',
+        username: 'm.mario',
+        role: 'plumber'
+    },
+    {
+        id: 'e5',
+        firstName: 'lester',
+        lastName: 'pearson',
+        title: `lester pearson`,
+        email: 'lester.pearson@lbpearson.com',
+        username: 'l.pearson',
+        role: 'prime minister'
+    },
+    {
+      id: 'nt',
+      title: 'nest test',
+      firstName: 'nest',
+      lastName: 'test',
+      children: [
+          {id: 'tc', title: 'test child'}
+      ]
     }
   ]
 
+  // Projects that would be created by users
   let projects = [
     {
-      id: 'p01',
-      resourceId: 'e01',
+      id: 'p1',
+      resourceId: 'e1',
       title: 'Project Title',
       start: '2023-05-07',
       end: '2023-05-21'
     },
     {
-      id: 'p02',
-      resourceId: 'e02',
+      id: 'p2',
+      resourceId: 'e2',
       title: 'Fix the thing',
       startRecur: '2023-05-05',
       endRecur: '2023-09-15',
       daysOfWeek: [0, 3, 6]
     },
     {
-      id: 'p03',
-      resourceIds: ['e03', 'e04'],
+      id: 'p3',
+      resourceIds: ['e3', 'e4'],
       title: 'Click me group project',
       start: '2023-05-07',
       end: '2023-05-10',
@@ -48,14 +92,38 @@
 
   // Toggle goals
   let goalsVisible = false;
-  const goalsHandler = () => {
+  function goalsHandler() {
     goalsVisible = !goalsVisible;
+  };
+
+  // Expand form to add project
+  let formVisible = false;
+  function formVisibilityHandler() {
+    formVisible = true;
+  };
+
+  // Fake Ids for now, will increment below when used
+  let fakeId = 3;
+
+  // Handle form(add project) submits
+  function addProjectHandler(event) {
+    fakeId ++; // Fake ID to simulate db id
+
+    projects = [
+      {
+      id: "p" + fakeId.toString(),
+      resourceId: event.detail.resourceId, 
+      title: event.detail.title,
+      start: event.detail.start,
+      end: event.detail.end
+      },
+    ...projects]
   };
 </script>
 
 <Navbar />
 <main class="mx-auto">
-  <!-- TODO: -->
+  <!-- TODO: Complete goals-->
   <button on:click={goalsHandler}>View Goals</button>
   {#if goalsVisible}
   <ul id="goals" class="mb-10">
@@ -69,7 +137,16 @@
     <li>Design the TImeline better</li>
   </ul>
   {/if}
+  <button on:click={formVisibilityHandler}>Add Project</button>
   <Timeline {employees} {projects}/>
+  {#if formVisible}
+  <AddProjectForm
+    actionUrl="/"
+    {employees}
+    {formVisible}
+    on:click={() => formVisible = false}
+    on:addProject={addProjectHandler}/>
+  {/if}
 </main>
 <Footer />
 
@@ -91,7 +168,8 @@
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0.3rem;
-    margin-bottom: 2rem;
+    display: block;
+    margin: 2rem;
   }
 
   button:hover,
