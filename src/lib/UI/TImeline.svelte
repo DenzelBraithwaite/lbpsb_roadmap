@@ -1,4 +1,7 @@
 <script lang="ts">
+    // Components
+    import AddProjectForm from './AddProjectForm.svelte';
+
     // Svelte hooks
     import { onMount } from 'svelte';
 
@@ -12,6 +15,7 @@
     import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 
     // Props
+    let formVisible = false;
     export let employees = [];
     export let projects = [];
 
@@ -37,14 +41,42 @@
         timeline.render();
     });
 
+  // Expand form to add project
+  function formVisibilityHandler() {
+    formVisible = true;
+  };
 </script>
 
 <main>
+  <button on:click={formVisibilityHandler}>Add Project</button>
     <div id="timeline"></div>
+    {#if formVisible}
+    <AddProjectForm
+      actionUrl="/"
+      {employees}
+      {formVisible}
+      on:click={() => formVisible = false}
+      on:addProject/>
+    {/if}
 </main>
 
 <style>
     main {
         min-height: 50vh;
     }
+
+    
+  button {
+    background-color: #203952;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.3rem;
+    display: block;
+    margin: 2rem 0;
+  }
+
+  button:hover,
+  button:active {
+    background-color: #182b3f;
+  }
 </style>

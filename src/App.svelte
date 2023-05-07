@@ -2,9 +2,7 @@
   import { onMount } from 'svelte';
   import Navbar from './lib/UI/Navbar.svelte';
   import Footer from './lib/UI/Footer.svelte';
-  import ADdProjectForm from './lib/UI/AddProjectForm.svelte';
   import Timeline from './lib/UI/TImeline.svelte';
-  import AddProjectForm from './lib/UI/AddProjectForm.svelte';
 
   // Employee data that would come from DB
   const employees = [
@@ -96,12 +94,6 @@
     goalsVisible = !goalsVisible;
   };
 
-  // Expand form to add project
-  let formVisible = false;
-  function formVisibilityHandler() {
-    formVisible = true;
-  };
-
   // Fake Ids for now, will increment below when used
   let fakeId = 3;
 
@@ -137,16 +129,7 @@
     <li>Design the TImeline better</li>
   </ul>
   {/if}
-  <button on:click={formVisibilityHandler}>Add Project</button>
-  <Timeline {employees} {projects}/>
-  {#if formVisible}
-  <AddProjectForm
-    actionUrl="/"
-    {employees}
-    {formVisible}
-    on:click={() => formVisible = false}
-    on:addProject={addProjectHandler}/>
-  {/if}
+  <Timeline {employees} {projects} on:addProject={addProjectHandler}/>
 </main>
 <Footer />
 
@@ -163,18 +146,19 @@
     list-style-position: inside;
   }
 
+  
   button {
-    background-color: #203952;
+    background-color: #21667C;
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0.3rem;
     display: block;
-    margin: 2rem;
+    margin: 1rem 0 5rem;
   }
 
   button:hover,
   button:active {
-    background-color: #182b3f;
+    background-color: #14485a;
   }
 </style>
 
