@@ -5,6 +5,7 @@
     export let actionUrl;
     export let employees;
     export let formVisible;
+    export let fakeId;
     
     $: fName = employeeTitle.split(' ')[0];
     $: lName = employeeTitle.split(' ')[1] || '';
@@ -17,22 +18,22 @@
     let employee;
     
     const createEvent = createEventDispatcher();
-    
-    function submitHandler(event) {
-        // Get the right employee
+
+    function submitHandler() {
+        // Find the right employee
         employee = employees.find((e) => {
             return e.title === employeeTitle;
         });
 
-        // Custom event that passes form data on submit, data handled in parent component.
-        createEvent('addProject', {
+        createEvent('addEvent', {
+            projectId: "p" + fakeId.toString(),
             resourceId: employee.id,
-            title: employeeTitle,
+            title: title,
             description: description,
             start: startDate,
             end: endDate,
         })
-    }
+    };
 </script>
 
 {#if formVisible}

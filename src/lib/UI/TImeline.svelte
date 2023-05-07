@@ -1,9 +1,9 @@
 <script lang="ts">
+    // Svelte hooks
+    import { onMount, createEventDispatcher } from 'svelte';
+
     // Components
     import AddProjectForm from './AddProjectForm.svelte';
-
-    // Svelte hooks
-    import { onMount } from 'svelte';
 
     // FullCalendar plugins & hooks
     import { Calendar } from '@fullcalendar/core';
@@ -18,7 +18,12 @@
     let formVisible = false;
     export let employees = [];
     export let projects = [];
+    let employee;    
 
+    // For creating custom events
+    const createEvent = createEventDispatcher();
+
+    // Initializing timeline
     let timeline;
     onMount(() => {
         const timelineEl: HTMLElement = document.getElementById('timeline')!;
@@ -41,10 +46,38 @@
         timeline.render();
     });
 
-  // Expand form to add project
-  function formVisibilityHandler() {
+    // Expand form to add project
+    function formVisibilityHandler() {
     formVisible = true;
-  };
+    };
+
+    // Simulate db id
+    let fakeId = 4;
+    function eventHandler(event) {
+        const details = event.detail;
+        
+        console.log(timeline);
+        // Add event(project) to timeline
+        timeline.addEvent({
+            id: details.projectId,
+            resourceId: details.resourceId,
+            title: details.title,
+            description: details.description,
+            start: details.start,
+            end: details.end
+        });
+
+        // Custom event that passes form data on submit, data handled in parent component.
+        createEvent('addProject', {
+            projectId: details.projectId,
+            resourceId: details.resourceId,
+            title: details.title,
+            description: details.description,
+            start: details.startDate,
+            end: details.endDate
+        })
+        fakeId ++;
+    };
 </script>
 
 <main>
@@ -53,10 +86,11 @@
     {#if formVisible}
     <AddProjectForm
       actionUrl="/"
+      {fakeId}
       {employees}
       {formVisible}
       on:click={() => formVisible = false}
-      on:addProject/>
+      on:addEvent={eventHandler}/>
     {/if}
 </main>
 

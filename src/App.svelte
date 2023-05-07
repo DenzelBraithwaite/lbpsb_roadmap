@@ -58,7 +58,61 @@
       children: [
           {id: 'tc', title: 'test child'}
       ]
-    }
+    },
+    {
+        id: 'e1000',
+        firstName: 'other',
+        lastName: 'other0',
+        title: `other other0`,
+        email: 'other.other0@lbpearson.com',
+        username: 'o.other0',
+        role: 'other'
+    },
+    {
+        id: 'e10001',
+        firstName: 'other',
+        lastName: 'other1',
+        title: `other other1`,
+        email: 'other.other1@lbpearson.com',
+        username: 'o.other1',
+        role: 'other'
+    },
+    {
+        id: 'e10002',
+        firstName: 'other',
+        lastName: 'other2',
+        title: `other other2`,
+        email: 'other.other2@lbpearson.com',
+        username: 'o.other2',
+        role: 'other'
+    },
+    {
+        id: 'e10003',
+        firstName: 'other',
+        lastName: 'other3',
+        title: `other other3`,
+        email: 'other.other3@lbpearson.com',
+        username: 'o.other3',
+        role: 'other'
+    },
+    {
+        id: 'e10004',
+        firstName: 'other',
+        lastName: 'other4',
+        title: `other other4`,
+        email: 'other.other4@lbpearson.com',
+        username: 'o.other4',
+        role: 'other'
+    },
+    {
+        id: 'e10005',
+        firstName: 'other',
+        lastName: 'other5',
+        title: `other other5`,
+        email: 'other.other52@lbpearson.com',
+        username: 'o.other',
+        role: 'other'
+    },
   ]
 
   // Projects that would be created by users
@@ -94,20 +148,17 @@
     goalsVisible = !goalsVisible;
   };
 
-  // Fake Ids for now, will increment below when used
-  let fakeId = 3;
-
   // Handle form(add project) submits
   function addProjectHandler(event) {
-    fakeId ++; // Fake ID to simulate db id
+    const details = event.detail;
 
     projects = [
       {
-      id: "p" + fakeId.toString(),
-      resourceId: event.detail.resourceId, 
-      title: event.detail.title,
-      start: event.detail.start,
-      end: event.detail.end
+      id: details.projectId,
+      resourceId: details.resourceId, 
+      title: details.title,
+      start: details.start,
+      end: details.end
       },
     ...projects]
   };
@@ -123,7 +174,7 @@
     <li>Add an array of employees to populate the resources section✅</li>
     <li>Populate the resources area✅</li>
     <li>Create events, hardcoded✅.</li>
-    <li>Create an event(project) via form, add under an employee's projects.</li>
+    <li>Create an event(project) via form, add under an employee's projects.✅</li>
     <li>Click on timeline event(project) to see more details.</li>
     <li>Fix layout, match MS project</li>
     <li>Design the TImeline better</li>
