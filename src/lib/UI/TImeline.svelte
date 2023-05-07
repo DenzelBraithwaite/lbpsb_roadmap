@@ -13,6 +13,7 @@
 
     // Props
     export let employees = [];
+    export let projects = [];
 
     let timeline;
     onMount(() => {
@@ -24,14 +25,14 @@
             // aspectRatio: 1.5,
             height: 650,
             plugins: [ resourceTimelinePlugin ],
-            initialView: 'resourceTimeline',
+            initialView: 'resourceTimelineMonth',
             resources: employees,
             headerToolbar: {
                 left: 'prev,today,next',
                 center: 'title',
-                right: 'timelineDay,timelineWeek,timelineMonth,timelineYear'
+                right: 'resourceTimelineMonth,resourceTimelineYear'
             },
-            events: [],
+            events: projects,
         });
         timeline.render();
     });
