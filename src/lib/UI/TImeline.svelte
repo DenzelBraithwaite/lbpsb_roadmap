@@ -11,21 +11,27 @@
     // Premium FullCalendar features
     import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 
-    onMount(() => {
-        console.log('yes mounted')
+    // Props
+    export let employees = [];
 
+    let timeline;
+    onMount(() => {
         const timelineEl: HTMLElement = document.getElementById('timeline')!;
-        let timeline = new Calendar(timelineEl, {
-            schedulerLicenseKey: '0478426686-fcs-1616090302',
-            // schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives', // Trial version
+
+        timeline = new Calendar(timelineEl, {
+            // schedulerLicenseKey: '0478426686-fcs-1616090302',
+            schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives', // Trial version
+            // aspectRatio: 1.5,
+            height: 650,
             plugins: [ resourceTimelinePlugin ],
             initialView: 'resourceTimeline',
-            // resources: [],
+            resources: employees,
             headerToolbar: {
-                left: 'prev,next today',
+                left: 'prev,today,next',
                 center: 'title',
-                right: 'timelineDay, timelineWeek, timelineMonth, timelineYear'
-            }
+                right: 'timelineDay,timelineWeek,timelineMonth,timelineYear'
+            },
+            events: [],
         });
         timeline.render();
     });
@@ -39,9 +45,5 @@
 <style>
     main {
         min-height: 50vh;
-    }
-
-    #calendar {
-        height: 600px;
     }
 </style>
