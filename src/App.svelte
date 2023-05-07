@@ -175,6 +175,7 @@
     <li>Populate the resources area✅</li>
     <li>Create events, hardcoded✅.</li>
     <li>Create an event(project) via form, add under an employee's projects.✅</li>
+    <li>Redesign simple 'modal/card' for event detail hover, because you're smart and deleted it</li>
     <li>Click on timeline event(project) to see more details.</li>
     <li>Fix layout, match MS project</li>
     <li>Design the TImeline better</li>
