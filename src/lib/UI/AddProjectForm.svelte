@@ -7,13 +7,11 @@
     export let formVisible;
     export let fakeId;
     
-    $: fName = employeeTitle.split(' ')[0];
-    $: lName = employeeTitle.split(' ')[1] || '';
-    $: title = '';
-    $: employeeTitle = '';
-    $: description = '';
-    $: startDate = '';
-    $: endDate = '';
+    let title = '';
+    let employeeTitle = '';
+    let description = '';
+    let startDate = '';
+    let endDate = '';
 
     let employee;
     
@@ -33,6 +31,12 @@
             start: startDate,
             end: endDate,
         })
+
+        title = '';
+        employeeTitle = '';
+        description = '';
+        startDate = '';
+        endDate = '';
     };
 </script>
 
@@ -48,7 +52,7 @@
                 <label for="employee" class="">Choose Employee</label>
                 <select bind:value={employeeTitle} name="employee-title" id="employee-title" class="border rounded">
                     {#each employees as emp}
-                        <option value="{emp['firstName'] + ' ' + emp['lastName']}">{emp['firstName'] + ' ' + emp['lastName']}</option>
+                        <option value="{emp.title}">{emp.title}</option>
                     {/each}
                 </select>
             </div>
