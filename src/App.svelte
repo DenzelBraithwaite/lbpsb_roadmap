@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  // import Navbar from './lib/UI/Navbar.svelte';
   import Navbar from './lib/UI/Navbar.svelte';
   import Footer from './lib/UI/Footer.svelte';
   import Timeline from './lib/UI/TImeline.svelte';
@@ -164,6 +165,7 @@
   };
 </script>
 
+<!-- <Navbar /> -->
 <Navbar />
 <main class="mx-auto">
   <!-- TODO: Complete goals-->
@@ -186,11 +188,22 @@
 <Footer />
 
 <style>
+  :global(body) {
+    background: url('../public/images/fusion-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    padding-top: 10rem;
+  }
+
   main {
     position: relative;
     width: 90%;
     max-width: 1200px;
-    padding: 100px 0;
+    min-height: 100vh;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
   }
 
   ul {

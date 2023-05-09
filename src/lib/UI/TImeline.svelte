@@ -95,11 +95,6 @@
 </main>
 
 <style>
-    main {
-        min-height: 50vh;
-    }
-
-    
   button {
     background-color: #203952;
     color: #fff;
