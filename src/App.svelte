@@ -169,6 +169,7 @@
 <Navbar />
 <button on:click={goalsHandler}>View Goals</button>
 <main class="mx-auto">
+  <p class="fusion-path">Home / <span class="roadmap">Roadmap</span></p>
   <!-- TODO: Complete goals-->
   {#if goalsVisible}
   <ul id="goals" class="mb-10">
@@ -200,7 +201,6 @@
     position: relative;
     width: 90%;
     max-width: 1200px;
-    padding-top: 3rem;
     background-color: #fff;
     border-radius: 0.25rem;
   }
@@ -223,6 +223,16 @@
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     border-radius: 0.3rem;
+  }
+
+  .fusion-path {
+    color: #fff;
+    position: absolute;
+    top: -2rem;
+  }
+
+  .roadmap {
+    color: #26B0E4;
   }
 </style>
 

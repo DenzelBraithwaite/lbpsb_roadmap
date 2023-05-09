@@ -80,9 +80,13 @@
     };
 </script>
 
+<header>
+  <h2>Roadmap</h2>
+</header>
 <main>
   <button on:click={formVisibilityHandler}>New Project</button>
-    <div id="timeline"></div>
+    <div id="timeline">
+    </div>
     {#if formVisible}
     <AddProjectForm
       actionUrl="/"
@@ -95,6 +99,18 @@
 </main>
 
 <style>
+  header {
+    background-color: #26B0E4;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  header > h2 {
+    font-size: 2rem;
+    color: #fff;
+  }
+
   main {
     position: relative;
   }
