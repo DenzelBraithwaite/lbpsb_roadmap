@@ -32,7 +32,7 @@
             // schedulerLicenseKey: '0478426686-fcs-1616090302',
             schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives', // Trial version
             // aspectRatio: 1.5,
-            height: 650,
+            height: 600,
             plugins: [ resourceTimelinePlugin ],
             initialView: 'resourceTimelineMonth',
             resources: employees,
@@ -81,7 +81,7 @@
 </script>
 
 <main>
-  <button on:click={formVisibilityHandler}>Add Project</button>
+  <button on:click={formVisibilityHandler}>New Project</button>
     <div id="timeline"></div>
     {#if formVisible}
     <AddProjectForm
@@ -95,17 +95,27 @@
 </main>
 
 <style>
+  main {
+    position: relative;
+  }
+
+  #timeline {
+    width: 100%;
+    padding: 0.125rem;
+  }
+
   button {
-    background-color: #203952;
+    display: block;
+    background-color: #3abb65;
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0.3rem;
-    display: block;
-    margin: 2rem 0;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
   }
 
   button:hover,
   button:active {
-    background-color: #182b3f;
+    background-color: #34a058;
   }
 </style>

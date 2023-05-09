@@ -167,9 +167,9 @@
 
 <!-- <Navbar /> -->
 <Navbar />
+<button on:click={goalsHandler}>View Goals</button>
 <main class="mx-auto">
   <!-- TODO: Complete goals-->
-  <button on:click={goalsHandler}>View Goals</button>
   {#if goalsVisible}
   <ul id="goals" class="mb-10">
     <li>Scroll endlessly through all months view. ✅</li>
@@ -185,25 +185,24 @@
   {/if}
   <Timeline {employees} {projects} on:addProject={addProjectHandler}/>
 </main>
-<Footer />
+<!-- <Footer /> -->
 
 <style>
   :global(body) {
-    background: url('../public/images/fusion-bg.png');
+    background: url('/img/fusion-bg.png');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-    padding-top: 10rem;
+    padding: 10rem 0;
   }
 
   main {
     position: relative;
     width: 90%;
     max-width: 1200px;
-    min-height: 100vh;
-    padding: 3rem;
+    padding-top: 3rem;
     background-color: #fff;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
   }
 
   ul {
@@ -213,17 +212,17 @@
 
   
   button {
-    background-color: #21667C;
+    text-decoration: underline;
     color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.3rem;
-    display: block;
-    margin: 1rem 0 5rem;
+    margin-left: 2rem;
   }
 
   button:hover,
   button:active {
-    background-color: #14485a;
+    background-color: #3abb65;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.3rem;
   }
 </style>
 

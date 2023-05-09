@@ -4,7 +4,7 @@
 
 <navbar>
     <div class="logo-wrapper">
-      <img src="public/images/logo.png" alt="lbpsb board logo." class="logo">
+      <img src="/img/logo.png" alt="lbpsb board logo." class="logo">
         <h1>LBPSB<span class="fusion-title">FUSION</span></h1>
     </div>
     <div class="icon-wrapper">
