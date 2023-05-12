@@ -20,7 +20,6 @@
     export let employees = [];
     export let projects = [];
     let employee;
-    let modalVisible = false;
 
     // For creating custom events
     const createEvent = createEventDispatcher();
@@ -36,6 +35,8 @@
             plugins: [ resourceTimelinePlugin ],
             initialView: 'resourceTimelineMonth',
             resources: employees,
+            resourceOrder: 'title',
+            resourceAreaHeaderContent: 'Technicians',
             headerToolbar: {
                 left: 'prev,today,next',
                 center: 'title',
@@ -44,7 +45,11 @@
             events: projects,
             // Callback functions
             eventClick: function(info) {
-              
+              const startD = info.event.startStr;
+              const endD = info.event.endStr;
+              const eventTitle = info.event.title;
+
+              modalHandler(startD, endD, eventTitle);
             }
         });
         timeline.render();
@@ -82,20 +87,40 @@
         })
         fakeId ++;
     };
+
+    // Event Modal
+    let modalVisible = false;
+    let startDate;
+    let endDate;
+    let tech;
+    let modalTitle;
+
+    function modalVisibilityHandler(event) {
+      if (event.target.classList.contains('backdrop')) {
+        modalVisible = false;
+        console.log(modalVisible);
+      }
+    };
+
+    function modalHandler(start, end, title) {
+      modalTitle = title;
+      startDate = start;
+      endDate = end;
+      // tech = tech;
+      modalVisible = !modalVisible;
+    };
 </script>
 
 <!-- Visibility toggled through visible prop -->
-<Modal visible={modalVisible}>
-  <h2 slot="title">Dynamix title</h2>
-  <p slot="start">05/05/2023</p>
-  <p slot="end">05/12/2023</p>
-  <p slot="tech">Denzel Braithwaite</p>
+<Modal on:mousedown={modalVisibilityHandler} {modalVisible} {modalTitle}>
+  <p slot="start">{startDate}</p>
+  <p slot="end">{endDate}</p>
+  <p slot="tech">{tech}</p>
 </Modal>
 <header>
   <h2>Roadmap</h2>
 </header>
 <main>
-  <button on:click={() => {modalVisible = !modalVisible}}>Toggle Modal</button>
   <button on:click={formVisibilityHandler}>New Project</button>
     <div id="timeline">
     </div>

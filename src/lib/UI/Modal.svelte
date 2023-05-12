@@ -1,14 +1,15 @@
 <script>
-    export let visible = false;
-    let title = '';
+    export let modalVisible;
+    export let modalTitle;
 </script>
 
-{#if visible}
-    <div class="backdrop">
+{#if modalVisible}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div on:mousedown class="backdrop">
         <div class="modal">
             <div class="modalContent">
                 <header>
-                    <input bind:value={title} type="text" placeholder="Title here">
+                    <input bind:value={modalTitle} type="text" placeholder="Title here">
                 </header>
                 <main>
                     <h3>Start</h3>
@@ -58,6 +59,7 @@
 
     .modal p {
         margin-bottom: 1rem;
+        font-size: 0.9rem;
     }
 
     .modal input {
@@ -66,6 +68,7 @@
         outline: none;
         color: #fff;
         caret-color: #fff;
+        font-size: 1.5rem;
     }
 
     .modal input:active,
