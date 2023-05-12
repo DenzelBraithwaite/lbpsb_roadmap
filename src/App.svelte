@@ -167,7 +167,7 @@
 
 <!-- <Navbar /> -->
 <Navbar />
-<button on:click={goalsHandler}>View Goals</button>
+<button type="button" on:click={goalsHandler}>View Goals</button>
 <main class="mx-auto">
   <p class="fusion-path">Home / <span class="roadmap">Roadmap</span></p>
   <!-- TODO: Complete goals-->

@@ -43,6 +43,12 @@
                 right: 'resourceTimelineMonth,resourceTimelineYear'
             },
             events: projects,
+            displayEventTime: true,
+
+            // CSS Customization
+            eventColor: '#26B0E4',
+            
+
             // Callback functions
             eventClick: function(info) {
               const startD = info.event.startStr;
@@ -121,7 +127,7 @@
   <h2>Roadmap</h2>
 </header>
 <main>
-  <button on:click={formVisibilityHandler}>New Project</button>
+  <button type="button" on:click={formVisibilityHandler}>New Project</button>
     <div id="timeline">
     </div>
     {#if formVisible}
@@ -173,4 +179,30 @@
   button:active {
     background-color: #34a058;
   }
+
+  /* FullCalendar customization */
+  :global(.fc-button-primary) {
+    background-color: #26B0E4 !important;
+    border-color: #26B0E4 !important;
+  }
+
+  :global(.fc-button-primary):hover {
+    background-color: #1e9ac7 !important;
+  }
+
+  :global(.fc-button-primary):active{
+    background-color: #178bb5 !important;
+  }
+
+  :global(.fc-button-primary):hover,
+  :global(.fc-button-primary):active,
+  :global(.fc-button-primary):focus {
+    box-shadow: none !important;
+  }
+
+  :global(.fc-button-active) {
+    background-color: #178bb5 !important;
+    border-color: #178bb5 !important;
+  }
+
 </style>
