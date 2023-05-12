@@ -27,12 +27,13 @@
 
 <style>
   navbar {
-      position: fixed;
-      top: 0;
+      /* position: fixed; */
+      /* top: 0; */
       color: #fff;
       width: 100vw;
       z-index: 20;
       padding: 1rem;
+      margin-bottom: 5rem;
 
       display: flex;
       justify-content: space-between;

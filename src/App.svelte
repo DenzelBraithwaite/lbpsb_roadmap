@@ -194,12 +194,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-    padding: 10rem 0;
+    padding-bottom: 10rem;
   }
 
   main {
     position: relative;
-    width: 90%;
+    width: 80%;
     max-width: 1200px;
     background-color: #fff;
     border-radius: 0.25rem;

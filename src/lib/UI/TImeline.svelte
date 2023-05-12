@@ -4,8 +4,9 @@
 
     // Components
     import AddProjectForm from './AddProjectForm.svelte';
+    import Modal from './Modal.svelte';
 
-    // FullCalendar plugins & hooks
+    // FullCalendar plugins
     import { Calendar } from '@fullcalendar/core';
     import dayGridPlugin from '@fullcalendar/daygrid';
     import timeGridPlugin from '@fullcalendar/timegrid';
@@ -18,7 +19,8 @@
     let formVisible = false;
     export let employees = [];
     export let projects = [];
-    let employee;    
+    let employee;
+    let modalVisible = false;
 
     // For creating custom events
     const createEvent = createEventDispatcher();
@@ -31,8 +33,6 @@
         timeline = new Calendar(timelineEl, {
             // schedulerLicenseKey: '0478426686-fcs-1616090302',
             schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives', // Trial version
-            // aspectRatio: 1.5,
-            height: 600,
             plugins: [ resourceTimelinePlugin ],
             initialView: 'resourceTimelineMonth',
             resources: employees,
@@ -42,6 +42,10 @@
                 right: 'resourceTimelineMonth,resourceTimelineYear'
             },
             events: projects,
+            // Callback functions
+            eventClick: function(info) {
+              
+            }
         });
         timeline.render();
     });
@@ -80,10 +84,18 @@
     };
 </script>
 
+<!-- Visibility toggled through visible prop -->
+<Modal visible={modalVisible}>
+  <h2 slot="title">Dynamix title</h2>
+  <p slot="start">05/05/2023</p>
+  <p slot="end">05/12/2023</p>
+  <p slot="tech">Denzel Braithwaite</p>
+</Modal>
 <header>
   <h2>Roadmap</h2>
 </header>
 <main>
+  <button on:click={() => {modalVisible = !modalVisible}}>Toggle Modal</button>
   <button on:click={formVisibilityHandler}>New Project</button>
     <div id="timeline">
     </div>
@@ -97,6 +109,7 @@
       on:addEvent={eventHandler}/>
     {/if}
 </main>
+
 
 <style>
   header {
@@ -118,6 +131,7 @@
   #timeline {
     width: 100%;
     padding: 0.125rem;
+    height: 600px;
   }
 
   button {
