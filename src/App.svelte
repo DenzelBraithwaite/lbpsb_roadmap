@@ -14,7 +14,7 @@
       title: `denzel braithwaite`, // Title is what fullcalendar displays as resource name
       email: 'denzel.braithwaite@lbpearson.com',
       username: 'd.braithwaite',
-      role: 'devloper'
+      role: 'developer'
     },    {
         id: 'e2',
         firstName: 'jeffrey',
@@ -31,7 +31,7 @@
         title: `steven lacroix`,
         email: 'steven.lacroix@lbpearson.com',
         username: 's.lacroix',
-        role: 'devloper'
+        role: 'developer'
     },
     {
         id: 'e4',
@@ -167,22 +167,25 @@
 
 <!-- <Navbar /> -->
 <Navbar />
-<button type="button" on:click={goalsHandler}>View Goals</button>
+<button class="btn-goals" type="button" on:click={goalsHandler}>View Goals</button>
 <main class="mx-auto">
   <p class="fusion-path">Home / <span class="roadmap">Roadmap</span></p>
   <!-- TODO: Complete goals-->
   {#if goalsVisible}
-  <ul id="goals" class="mb-10">
-    <li>Scroll endlessly through all months view. ✅</li>
-    <li>Add an array of employees to populate the resources section✅</li>
-    <li>Populate the resources area✅</li>
-    <li>Create events, hardcoded✅.</li>
-    <li>Create an event(project) via form, add under an employee's projects.✅</li>
-    <li>Redesign simple 'modal/card' for event detail hover, because you're smart and deleted it</li>
-    <li>Click on timeline event(project) to see more details.</li>
-    <li>Fix layout, match MS project</li>
-    <li>Design the TImeline better</li>
-  </ul>
+  <p><mark>Here are some ideas for the Roadmap Project. Nothing is set in stone, and you are more than welcome to suggest things as we work on this.</mark></p>
+     <br>
+     <p class="goal">✅Compared to Microsoft Project, we want horizontal lines to be a person instead a project.</p>
+     <p class="goal">🟠When creating new project/task, it would be great to allow it to be recurring. i.e., every year, in May, ABC thing needs to be updated in XYZ app.</p>
+     <p class="goal">🟠A project/task should have an estimated length for completion and a deadline. The deadline is more of an indication in the project/task information. What we would see graphically on the roadmap is the start date + length.</p>
+     <p class="goal">🟠When creating a project/task, it would be nice to select a color that goes with it. It could be a set of predefined colors.</p>
+     <p class="goal">🟠When clicking on a project/task, we want a modal open with more info. Info could be owner, participants, quick description, start time, length, deadline…</p>
+     <p class="goal">🟠We want to be able to easily jump to a specific date on the timeline.</p>
+     <p class="goal">🟠Create a roadmap (someone could create their own personal roadmap)</p>
+    <p class="goal">🛑Invite people to collaborate on a roadmap. (this can be worked on later once we integrate users)</p>
+    <p class="goal">🛑You can only see a roadmap if you are invited (part of it).</p>
+    <p class="goal">🛑Permissions can be given to edit / add to the roadmap.</p>
+    <p class="goal">🛑Users can only edit their own project/task on the roadmap.</p>
+    <p class="goal">🛑When creating a project/task, allow to add participants. These participants will now have the project/task under their name, but they would not be able to edit it. Only the owner can edit.</p>
   {/if}
   <Timeline {employees} {projects} on:addProject={addProjectHandler}/>
 </main>
@@ -205,16 +208,19 @@
     border-radius: 0.25rem;
   }
 
-  ul {
-    list-style: square;
-    list-style-position: inside;
+  .goal {
+    margin-bottom: 0.75rem;
   }
 
-  
-  button {
-    text-decoration: underline;
+  .btn-goals {
     color: #fff;
     margin-left: 2rem;
+  }
+
+  .btn-goals:hover {
+    background-color: transparent;
+    padding: 0;
+    text-decoration: underline;
   }
 
   button:hover,

@@ -161,7 +161,7 @@
 
   #timeline {
     width: 100%;
-    padding: 0.125rem;
+    padding: 0.25rem;
     height: 600px;
   }
 
@@ -180,7 +180,7 @@
     background-color: #34a058;
   }
 
-  /* FullCalendar customization */
+  /* FullCalendar custom styles */
   :global(.fc-button-primary) {
     background-color: #26B0E4 !important;
     border-color: #26B0E4 !important;
