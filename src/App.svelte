@@ -178,6 +178,7 @@
      <p class="goal">🟠When creating new project/task, it would be great to allow it to be recurring. i.e., every year, in May, ABC thing needs to be updated in XYZ app.</p>
      <p class="goal">🟠A project/task should have an estimated length for completion and a deadline. The deadline is more of an indication in the project/task information. What we would see graphically on the roadmap is the start date + length.</p>
      <p class="goal">🟠When creating a project/task, it would be nice to select a color that goes with it. It could be a set of predefined colors.</p>
+     <p class="goal">🟠When hovering over a project/task, we want a modal open with some info.
      <p class="goal">🟠When clicking on a project/task, we want a modal open with more info. Info could be owner, participants, quick description, start time, length, deadline…</p>
      <p class="goal">🟠We want to be able to easily jump to a specific date on the timeline.</p>
      <p class="goal">🟠Create a roadmap (someone could create their own personal roadmap)</p>
